@@ -1,0 +1,32 @@
+{
+  "name": "ledgerdatasvc",
+  "version": "1.0.0",
+  "description": "Ledger data service",
+  "main": "ledgerdatasvc.js",
+  "scripts": {
+    "start": "node ledgerdatasvc.js",
+    "test": "mocha test/**/*.test.js"
+  },
+  "keywords": [
+    "ledger data service",
+    "v1.0"
+  ],
+  "engines": {
+    "node": ">=8.4.0",
+    "npm": ">=5.4.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "js-sha3": "^0.6.1",
+    "lodash": "^4.17.4",
+    "request": "^2.81.0",
+    "async": "^2.5.0",
+    "jsonwebtoken": "^8.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}

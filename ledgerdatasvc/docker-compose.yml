@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  ledgerdatasvc:
+    container_name: ledgerdatasvc
+    environment:
+      - EVENT_HOST=${EVENT_HOST}
+      - EVENT_PORT=${EVENT_PORT}
+    image: ${LEDGERDATA_SVC_IMAGE_NAME}${LEDGERDATA_SVC_IMAGE_VERSION}
+    restart: on-failure:20
+    volumes:
+        - ./logs/:/ledgerdatasvc/logs/
+    ports:
+      - "8099:8099"
+    networks:
+      - ledgerdatanet
+
+networks:
+  ledgerdatanet:
+  
