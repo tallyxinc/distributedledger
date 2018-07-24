@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  ledgereventsvc:
+    container_name: ledgereventsvc-${EVENT_PEER}
+    environment:
+        - API_HOST_IP=${API_HOST_IP}
+        - API_HOST_PORT=${API_HOST_PORT}      
+        - NOTIFICATION_ENABLED=${NOTIFICATION_ENABLED}   
+        - EVENT_PEER=${EVENT_PEER}
+    image: ${SVC_IMAGE_NAME}${SVC_IMAGE_VERSION}
+    restart: on-failure:20
+    volumes:
+        - ./logs/:/ledgereventsvc/logs/
+    ports:
+      - "1010:1010"
+    networks:
+      - exlesnet
+
+networks:
+  exlesnet:
+  
