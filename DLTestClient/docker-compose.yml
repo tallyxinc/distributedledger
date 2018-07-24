@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  DLTestClient:
+    container_name: DLTestClient
+    environment:
+        - TARGET_HOST=${TARGET_HOST}
+        - TARGET_PORT=${TARGET_PORT}      
+        - TARGET_PATH=${TARGET_PATH}
+        - REQUEST_COUNT=${REQUEST_COUNT}
+        - ITERATION_COUNT=${ITERATION_COUNT}
+        - TEST_FILE_NAME=${TEST_FILE_NAME}   
+    image: ${LOADTEST_IMAGE_NAME}${LOADTEST_IMAGE_VERSION}
+    volumes:
+      - ./logs:/DLTestClient/logs
+    networks: 
+      - testnw
+
+
+networks: 
+  testnw:

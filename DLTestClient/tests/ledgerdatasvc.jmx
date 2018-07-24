@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="ledgerdatasvc" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${ITERATION_COUNT}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${REQUEST_COUNT}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &#xd;
+    &quot;assetId&quot; : &quot;${__UUID}&quot;, &#xd;
+    &quot;originatingTxnId&quot; : &quot;&quot;, &#xd;
+    &quot;transactionId&quot; : &quot;&quot;, &#xd;
+    &quot;ledgerEntryType&quot; : &quot;asset&quot;, &#xd;
+    &quot;subEventId&quot; : &quot;&quot;, &#xd;
+    &quot;eventId&quot; : &quot;LEDGER_CREATED&quot;, &#xd;
+    &quot;assetType&quot; : &quot;LAPTOP&quot;, &#xd;
+    &quot;transactionType&quot; : &quot;Laptop&quot;, &#xd;
+    &quot;auditProId&quot; : &quot;&quot;, &#xd;
+    &quot;processLog&quot; : {&#xd;
+        &quot;businessProcessId&quot; : &quot;LaptopInventory&quot;, &#xd;
+        &quot;dataCenterId&quot; : &quot;US-West-2&quot;, &#xd;
+        &quot;serverProcessId&quot; : &quot;CBX-BPMN-SERVER-01&quot;, &#xd;
+        &quot;targetGeo&quot; : [&#xd;
+            &quot;40.730539&quot;, &#xd;
+            &quot;-74.173517&quot;&#xd;
+        ], &#xd;
+        &quot;originatingGeo&quot; : [&#xd;
+            &quot;40.730539&quot;, &#xd;
+            &quot;-74.173517&quot;&#xd;
+        ]&#xd;
+    }, &#xd;
+    &quot;ledgerChain&quot; : {&#xd;
+        &quot;orginatingNodeId&quot; : &quot;ORG1&quot;, &#xd;
+        &quot;orginatingNodeType&quot; : &quot;Company&quot;, &#xd;
+        &quot;relations&quot; : [&#xd;
+        ]&#xd;
+    }, &#xd;
+    &quot;owner&quot; : {&#xd;
+        &quot;ownerId&quot; : &quot;ORG1&quot;, &#xd;
+        &quot;ownerType&quot; : &quot;Company&quot;&#xd;
+    }, &#xd;
+    &quot;crudLog&quot; : {&#xd;
+        &quot;updatedByUser&quot; : &quot;&quot;, &#xd;
+        &quot;updatedByOrg&quot; : &quot;&quot;, &#xd;
+        &quot;createdTimeStamp&quot; : &quot;&quot;, &#xd;
+        &quot;createdByUser&quot; : &quot;ORG1-User1&quot;, &#xd;
+        &quot;createdByOrg&quot; : &quot;ORG1&quot;&#xd;
+    }, &#xd;
+    &quot;ledger&quot; : {&#xd;
+        &quot;data&quot; : &quot;testdata&quot;&#xd;
+    }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${TARGET_HOST}</stringProp>
+          <stringProp name="HTTPSampler.port">${TARGET_PORT}</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${TARGET_PATH}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="TARGET_HOST" elementType="Argument">
+              <stringProp name="Argument.name">TARGET_HOST</stringProp>
+              <stringProp name="Argument.value">${__P(TARGET_HOST,localhost)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="TARGET_PORT" elementType="Argument">
+              <stringProp name="Argument.name">TARGET_PORT</stringProp>
+              <stringProp name="Argument.value">${__P(TARGET_PORT,8099)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="TARGET_PATH" elementType="Argument">
+              <stringProp name="Argument.name">TARGET_PATH</stringProp>
+              <stringProp name="Argument.value">${__P(TARGET_PATH,/ledger/asset?channel=ch-common&amp;org=org1&amp;ccn=ledgerdata)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="REQUEST_COUNT" elementType="Argument">
+              <stringProp name="Argument.name">REQUEST_COUNT</stringProp>
+              <stringProp name="Argument.value">${__P(REQUEST_COUNT,10)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="ITERATION_COUNT" elementType="Argument">
+              <stringProp name="Argument.name">ITERATION_COUNT</stringProp>
+              <stringProp name="Argument.value">${__P(ITERATION_COUNT,10)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">/home/nithin/testScripts/ledgerdata.csv</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+        <collectionProp name="Asserion.test_strings">
+          <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+        </collectionProp>
+        <stringProp name="Assertion.custom_message"></stringProp>
+        <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+        <boolProp name="Assertion.assume_success">false</boolProp>
+        <intProp name="Assertion.test_type">2</intProp>
+      </ResponseAssertion>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Content-Type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
